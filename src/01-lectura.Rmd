@@ -1,0 +1,62 @@
+---
+title: "Lectura de datos"
+output: 
+    html_document:
+        #code_folding: 'hide'
+        highlight: kate
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r Layout del código}
+# Las secciones de código utilizan el siguiente layout
+# ├ Sección ===
+# │ ├─ Sub 1 ---
+# │ │ ├─ Sub 2 ---
+# └ Fin de la sección
+```
+
+
+```{r Conexión a servidor}
+# ├ Librerías ====
+library(DBI)
+options(tidyverse.quiet = TRUE)
+library(tidyverse)
+
+# ├ Conexión ====
+con = dbConnect(RSQLite::SQLite(), ':memory:')
+
+# │ ├─Copiado de tablas ----
+copy_to(con, diamonds)
+
+# │ ├─Verificación ----
+# │ │ ├─ Tablas ----
+dbListTables(con)
+
+# └ │ ├─Campos ----
+dbListFields(con, 'diamonds')
+```
+
+
+```{sql Query, connection=con, output.var="sdiamantes_e"}
+SELECT * 
+  FROM diamonds
+ WHERE color = "D"
+```
+
+```{sql Estracción de la tabla, connection = con, output.var = 'diamantes'}
+SELECT *
+  FROM diamonds
+ WHERE carat > 0.25
+```
+
+```{r Escritura}
+# ├ Escritura ====
+write_csv(diamantes, here::here('data/raw', 'diam_raw.csv'))
+fst::write_fst(diamantes, here::here('data/raw', 'diam_raw.fst'))
+```
+
+
+
+
+

@@ -1,0 +1,9 @@
+Este es un tutorial de makefile.
+Consta de 3 scripts: 
+* 01-lectura.Rmd : un RMarkdown que lee los datos de un "servidor" (un SQLite en memoria RAM).
+* 02-limpieza.R  : un script de R que ficciona una limpieza de datos.
+* 03-reporte.Rmd : un Rmarkdown que crea un reporte en HTML. 
+
+Los scripts 01 y 02 se encuentra en la carpeta de data-raw, el script 03 se encuentra en /vignettes. 
+Los reportes en HTML de los scripts 01 y 03 son guardados en la carpeta /doc. 
+Los datos son guardados en la carpeta /data.

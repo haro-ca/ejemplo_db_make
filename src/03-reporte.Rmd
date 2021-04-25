@@ -1,0 +1,37 @@
+---
+title: "Presentación del análisis"
+output: 
+    html_document:
+        highlight: kate
+        code_folding: 'hide'
+---
+
+```{r Lectura, include=FALSE}
+# Librerías ====
+library(tidyverse)
+
+# Lectura ====
+diam <- fst::read_fst(here::here('data/processed', 'diam_clean.fst'))
+```
+
+
+```{r Gráfica,fig.height=13, fig.width= 20}
+diam %>% 
+    ggplot() +
+    geom_violin(aes(y = precio, x = 1, fill = cut), color = 'black', alpha = 0.5) +
+    scale_y_continuous(labels = scales::dollar) +
+    labs(
+        y = 'Precio\n(MXN)',
+        x = ''
+    ) +
+    theme_bw() +
+    theme(text = element_text(size = 26),
+        axis.text.y = element_blank()) +
+    coord_flip() +
+    facet_grid(cut~., switch = 'both')
+
+```
+
+
+
+
