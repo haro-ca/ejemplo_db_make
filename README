@@ -4,6 +4,6 @@ Consta de 3 scripts:
 * 02-limpieza.R  : un script de R que ficciona una limpieza de datos.
 * 03-reporte.Rmd : un Rmarkdown que crea un reporte en HTML. 
 
-Los scripts 01 y 02 se encuentra en la carpeta de data-raw, el script 03 se encuentra en /vignettes. 
+Los scripts se encuentra en la carpeta de src. 
 Los reportes en HTML de los scripts 01 y 03 son guardados en la carpeta /doc. 
 Los datos son guardados en la carpeta /data.
